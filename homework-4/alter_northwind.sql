@@ -21,8 +21,8 @@ ALTER TABLE order_details DROP CONSTRAINT fk_order_details_products
 DELETE FROM products WHERE discontinued = 1
 
 DELETE FROM order_details WHERE EXISTS (SELECT product_name FROM order_details
-									   	LEFT JOIN products USING(product_id)
-										WHERE product_name IS NULL)
+					LEFT JOIN products USING(product_id)
+					WHERE product_name IS NULL)
 
 ALTER TABLE order_details ADD CONSTRAINT fk_order_details_products
 FOREIGN KEY(product_id) REFERENCES products(product_id)
